@@ -1,0 +1,14 @@
+language: rust
+rust:
+  - nightly
+  - 1.0.0-beta
+script:
+  - cargo build --verbose
+  - cargo test --verbose
+after_script:
+  - cargo doc --verbose
+notifications:
+  email:
+    recipients:
+      - franklinchen@franklinchen.com
+    on_success: never

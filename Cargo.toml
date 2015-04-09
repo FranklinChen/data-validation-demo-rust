@@ -1,0 +1,4 @@
+[package]
+name = "data-validation-demo-rust"
+version = "0.0.1"
+authors = ["Franklin Chen <franklinchen@franklinchen.com>"]
