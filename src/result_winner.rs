@@ -36,7 +36,7 @@ impl Person {
   /// Dummy implementation only.
   fn best_friend(&self) -> Result<Person, MyError> {
     if self.name == "A" {
-      Ok(person_a())
+      Ok(person_b())
     } else {
       Err(MyError {
         message: format!("{} has no best friend", self.name)
@@ -47,7 +47,7 @@ impl Person {
   /// Dummy implementation only.
   fn oldest_sister(&self) -> Result<Person, MyError> {
     if self.name == "B" {
-      Ok(person_b())
+      Ok(person_c())
     } else {
       Err(MyError {
         message: format!("{} has no oldest sister", self.name)
@@ -58,7 +58,7 @@ impl Person {
   /// Dummy implementation only.
   fn youngest_child(&self) -> Result<Person, MyError> {
     if self.name == "Y" {
-      Ok(person_c())
+      Ok(person_z())
     } else {
       Err(MyError {
         message: format!("{} has no youngest child", self.name)
@@ -81,10 +81,10 @@ mod test {
   use super::*;
 
   #[test]
-  fn a_has_no_winner_because_no_oldest_sister() {
+  fn a_has_no_winner_because_c_no_youngest_child() {
     assert_eq!(winner(person_a()),
                Err(MyError {
-                 message: "A has no oldest sister".to_string()
+                 message: "C has no youngest child".to_string()
                }));
   }
 }

@@ -31,7 +31,7 @@ impl Person {
   /// Dummy implementation only.
   fn best_friend(&self) -> Option<Person> {
     if self.name == "A" {
-      Some(person_a())
+      Some(person_b())
     } else {
       None
     }
@@ -40,7 +40,7 @@ impl Person {
   /// Dummy implementation only.
   fn oldest_sister(&self) -> Option<Person> {
     if self.name == "B" {
-      Some(person_b())
+      Some(person_c())
     } else {
       None
     }
@@ -49,7 +49,7 @@ impl Person {
   /// Dummy implementation only.
   fn youngest_child(&self) -> Option<Person> {
     if self.name == "Y" {
-      Some(person_c())
+      Some(person_z())
     } else {
       None
     }
