@@ -13,10 +13,20 @@ pub enum Error {
 
 impl Seats {
   pub fn make(num: i32) -> Result<Seats, Error> {
-    if num < 0 {
+    if num <= 0 {
       Err(Error::BadCount(num))
     } else {
       Ok(Seats { num: num })
     }
+  }
+}
+
+#[cfg(test)]
+mod test {
+  use super::*;
+
+  #[test]
+  fn no_zero_seats() {
+    assert_eq!(Seats::make(0), Err(Error::BadCount(0)));
   }
 }
