@@ -1,8 +1,6 @@
 // -*- rust-indent-offset: 2 -*-
 // More compact, just for slides.
 
-use std::iter::Iterator;
-
 /// Convenient type synonym for a common pattern of usage.
 /// More generically, `Vec` could be replaced by a type implementing
 /// the trait [`Add`](http://doc.rust-lang.org/1.0.0-beta/std/ops/trait.Add.html).
@@ -31,8 +29,8 @@ pub fn combine2<T1, // success type for result1
 {
   match (result1, result2) {
     (Ok(v),       Ok(t))   => Ok(combine_success(v, t)),
-    (Ok(_),       Err(e2)) => Err(e2),
-    (Err(e1),     Ok(_))   => Err(e1),
+    (Ok(..),      Err(e2)) => Err(e2),
+    (Err(e1),     Ok(..))  => Err(e1),
     (Err(mut e1), Err(e2)) => Err({ e1.extend(e2.into_iter()); e1 })
   }
 }

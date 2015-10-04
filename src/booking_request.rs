@@ -29,7 +29,7 @@ impl BookingRequest {
     VecValidation<BookingRequest, Error>
   {
     let date_result = opt_date_string
-      .ok_or(Error::Missing("date".to_string()))
+      .ok_or(Error::Missing("date".to_owned()))
       .and_then(|date_string|
                 Date::parse(&date_string).map_err(Error::DateError)
                 )
@@ -38,7 +38,7 @@ impl BookingRequest {
                 );
 
     let seats_result = opt_seats
-      .ok_or(Error::Missing("seats".to_string()))
+      .ok_or(Error::Missing("seats".to_owned()))
       .and_then(|num|
                 Seats::make(num).map_err(Error::SeatsError)
                 );
@@ -71,7 +71,7 @@ mod test {
   fn date_is_early_and_seats_bad() {
     let now = Date::new(2);
     assert_eq!(BookingRequest::make(now,
-                                    Some("1".to_string()),
+                                    Some("1".to_owned()),
                                     Some(-3)),
                Err(vec![Error::DateBefore(Date::new(1),
                                           Date::new(2)),
@@ -81,7 +81,7 @@ mod test {
   fn all_good() {
     let now = Date::new(2);
     assert!(BookingRequest::make(now,
-                                 Some("3".to_string()),
+                                 Some("3".to_owned()),
                                  Some(5))
             .is_ok());
   }

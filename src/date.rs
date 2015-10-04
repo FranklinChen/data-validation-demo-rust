@@ -21,7 +21,7 @@ impl Date {
   pub fn parse(s: &str) -> Result<Date, Error> {
     match s.parse::<i32>() {
       Ok(seconds) => Ok(Date { seconds: seconds }),
-      Err(_) => Err(Error::BadParse(s.to_string()))
+      Err(..) => Err(Error::BadParse(s.to_owned()))
         // Just for demo, ignore the error.
     }
   }

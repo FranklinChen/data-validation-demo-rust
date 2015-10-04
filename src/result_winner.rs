@@ -13,23 +13,23 @@ pub struct MyError {
 }
 
 pub fn person_a() -> Person {
- Person { name: "A".to_string() }
+ Person { name: "A".to_owned() }
 }
 
 pub fn person_b() -> Person {
- Person { name: "B".to_string() }
+ Person { name: "B".to_owned() }
 }
 
 pub fn person_c() -> Person {
- Person { name: "C".to_string() }
+ Person { name: "C".to_owned() }
 }
 
 pub fn person_y() -> Person {
- Person { name: "Y".to_string() }
+ Person { name: "Y".to_owned() }
 }
 
 pub fn person_z() -> Person {
- Person { name: "Z".to_string() }
+ Person { name: "Z".to_owned() }
 }
 
 impl Person {
@@ -84,7 +84,7 @@ mod test {
   fn a_has_no_winner_because_c_no_youngest_child() {
     assert_eq!(winner(person_a()),
                Err(MyError {
-                 message: "C has no youngest child".to_string()
+                 message: "C has no youngest child".to_owned()
                }));
   }
 }
